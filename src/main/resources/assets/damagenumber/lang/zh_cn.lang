@@ -1,0 +1,13 @@
+damagenumber.title.content=Damage
+damagenumber.combo.content=%sX Combo
+damagenumber.damage_list.content= +%s
+damagenumber.number.content=%s
+damagenumber.config.title=Config Screen
+key.damage_number.show_config=显示伤害数字配置
+damagenumber.config.setting=配置
+damagenumber.config.x=X
+damagenumber.config.y=Y
+damagenumber.config.scale=缩放
+damagenumber.config.opacity=透明度
+damagenumber.config.select_key=要修改的部分
+damagenumber.config.max_size=最大数量
