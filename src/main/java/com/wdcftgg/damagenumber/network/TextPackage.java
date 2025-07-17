@@ -6,6 +6,7 @@ import com.wdcftgg.damagenumber.util.Color;
 import com.wdcftgg.damagenumber.util.StringTools;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
@@ -59,7 +60,7 @@ public class TextPackage implements IMessageHandler<TextPackage, IMessage>, IMes
 
         Minecraft mc = Minecraft.getMinecraft();
         if (mc.world != null) {
-            World world = mc.world;
+            WorldClient world = mc.world;
 
             Color color = new Color(message.rgb);
             final double posX = message.x;
