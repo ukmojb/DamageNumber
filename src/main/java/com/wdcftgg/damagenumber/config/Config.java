@@ -67,6 +67,9 @@ public class Config {
     public static boolean comboRankColorTitle;
     public static boolean comboRankColorCombo;
 
+    public static boolean damageParticle;
+    public static boolean healParticle;
+
     public Config() {
     }
 
@@ -113,6 +116,8 @@ public class Config {
             damageListOpacity = config.get("damageList", "damageListOpacity", 1.0, "damageListOpacity", 0.0, 1.0).getDouble();
             damageListMaxSize = config.get("damageList", "damageListMaxSize", 100, "damageListMaxSize", 0.0, 999.0).getInt();
 
+            damageParticle = config.get("particle", "damageParticle", true).getBoolean();
+            healParticle = config.get("particle", "healParticle", true).getBoolean();
 
             } catch (Exception var11) {
         } finally {

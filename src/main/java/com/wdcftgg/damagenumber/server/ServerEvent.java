@@ -1,5 +1,6 @@
 package com.wdcftgg.damagenumber.server;
 
+import com.wdcftgg.damagenumber.config.Config;
 import com.wdcftgg.damagenumber.init.ParticleInit;
 import com.wdcftgg.damagenumber.network.DamagePackage;
 import com.wdcftgg.damagenumber.network.PacketHandler;
@@ -89,12 +90,16 @@ public class ServerEvent {
         if (world.getClosestPlayerToEntity(target, 50) != null) canShow = true;
 
         if (canShow) {
+            boolean isDamage = amount > 0;
             Color color = amount > 0 ? Color.RED : Color.GREEN;
             final AxisAlignedBB bb = target.getEntityBoundingBox();
             final double posX = target.posX;
             final double posY = bb.maxY + 0.5D;
             final double posZ = target.posZ;
             String text = String.valueOf(Math.round(amount * 10f) / 10f);
+
+            if (isDamage && !Config.damageParticle) return;
+            if (!isDamage && !Config.healParticle) return;
 
             PacketHandler.INSTANCE.sendToAllAround(new TextPackage(posX, posY, posZ, color.rgb(), text), new NetworkRegistry.TargetPoint(world.provider.getDimension(), (double)target.getPosition().getX(), (double)target.getPosition().getY(), (double)target.getPosition().getZ(), 256.0D));
 //            world.spawnParticle(ParticleInit.particleTextPopOff, posX, posY, posZ, 0, 0, 0, IntStream.concat(Arrays.stream(array), Arrays.stream(StringTools.encodeStringToInts(text))).toArray());
@@ -110,13 +115,16 @@ public class ServerEvent {
         boolean canShow = world.getClosestPlayerToEntity(target, 50) != null;
 
         if (canShow) {
-            Color color = amount < 0 ? Color.RED : Color.GREEN;
+            boolean isDamage = amount < 0;
+            Color color = isDamage ? Color.RED : Color.GREEN;
             final AxisAlignedBB bb = target.getEntityBoundingBox();
             final double posX = target.posX;
             final double posY = bb.maxY + 0.5D;
             final double posZ = target.posZ;
             String text = String.valueOf(Math.round(amount * 10f) / 10f);
 
+            if (isDamage && !Config.damageParticle) return;
+            if (!isDamage && !Config.healParticle) return;
 
             PacketHandler.INSTANCE.sendToAllAround(new TextPackage(posX, posY, posZ, color.rgb(), text), new NetworkRegistry.TargetPoint(world.provider.getDimension(), (double)target.getPosition().getX(), (double)target.getPosition().getY(), (double)target.getPosition().getZ(), 256.0D));
 //            world.spawnParticle(ParticleInit.particleTextPopOff, posX, posY, posZ, 0, 0, 0, IntStream.concat(Arrays.stream(array), Arrays.stream(StringTools.encodeStringToInts(text))).toArray());

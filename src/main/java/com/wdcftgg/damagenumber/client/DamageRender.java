@@ -118,8 +118,10 @@ public class DamageRender {
             if (!Data.latest.isEmpty()) {
                 List<Pair<Float,Long>> latestCopy = new ArrayList<>(Data.latest);
                 for (Pair<Float, Long> pair : latestCopy) {
-                    mc.fontRenderer.drawStringWithShadow(i18n("damage_list.content", String.format("%.1f", pair.getLeft())), x, y, (0xFFFFFF) | ((int) (Config.damageListOpacity * 255) << 24));
-                    y += lh;
+                    if (pair != null) {
+                        mc.fontRenderer.drawStringWithShadow(i18n("damage_list.content", String.format("%.1f", pair.getLeft())), x, y, (0xFFFFFF) | ((int) (Config.damageListOpacity * 255) << 24));
+                        y += lh;
+                    }
                 }
             }
             GlStateManager.popMatrix();
