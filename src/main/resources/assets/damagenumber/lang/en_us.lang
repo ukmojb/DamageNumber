@@ -1,0 +1,13 @@
+damagenumber.title.content=Damage
+damagenumber.combo.content=%sX Combo
+damagenumber.damage_list.content= +%s
+damagenumber.number.content=%s
+damagenumber.config.title=Config Screen
+key.damage_number.show_config=Show Damage Number Config
+damagenumber.config.setting=Settings
+damagenumber.config.x=X
+damagenumber.config.y=Y
+damagenumber.config.scale=Scale
+damagenumber.config.opacity=Opacity
+damagenumber.config.select_key=Part to modify
+damagenumber.config.max_size=Max Size
